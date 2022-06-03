@@ -22,9 +22,9 @@ body {
     min-height: 1000px;
     padding-top: 5px;
     padding-bottom: 15px;
-    border: 10px;
+    border: 0.3rem;
     border-color: var(--grey-background);
-    border-radius: 15px;
+    border-radius: 1.5rem;
     border-style: solid;
     display: flex;
     flex-direction: column;
@@ -51,13 +51,13 @@ body {
 }
 
 .innerframe {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 15px;
-    border: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 0.3rem;
     border-color: #98eb34;
-    border-radius: 15px;
+    border-radius: 1.5rem;
     border-style: solid;
     display: flex;
     flex-direction: column;
@@ -243,15 +243,17 @@ body {
 }
 
 .lowerbutton {
+    margin-top: 0.5rem;
     background-color: #98eb34;
     border-color: #98eb34;
     padding: 15px;
     width: 80%;
     height: auto;
-    min-height: 40px;
+    min-height: 5rem;
     font-weight: bold;
-    font-size: large;
+    font-size: 1.3rem;
     border-style: none;
+    cursor: pointer;
 }
 
 input {
