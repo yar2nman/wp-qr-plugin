@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/qrcode.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/modal.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Email Confirmation</title>
+</head>
+
+<body>
+    <div class="mroot">
+        <button class="closebutton" onclick="location.href='code.html'">X</button>
+        <div class="qrbox" id="qrboxid">
+        </div>
+        <p class="qruri">
+            http://localhost:8080/qrcode/qrcode.png?user:ahmed&name:Ali&code:123
+        </p>
+
+        <div class="orangetext">&#62; Display the QRcode for scanning</div>
+        <div class="orangetext">&#62; Embed the code to your website</div>
+
+        <label class="clabel" for="checkbox"><input id="checkbox" type="checkbox" name="checkbox" value="value">
+            <span><u class="modallink">Privacy Policy</u></span>
+        </label>
+
+        <button class="lowerbutton" onclick="location.href='recommendfriend.html'">
+            <a href="recommendfriend.html" onclick="location.href='recommendfriend.html'">Click here to send embedding
+                code & QR code your email</a>
+        </button>
+
+
+        <!-- Modal Area -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="mclose closebutton">&times;</span>
+                <iframe src="policy.html" frameborder="0" width="100%" height="80%"></iframe>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

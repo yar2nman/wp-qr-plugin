@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/qrcode.min.js"></script>
+    <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Recommend Friend</title>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            console.log("ready");
+            $(".emailvar").html(useremail);
+        });
+    </script>
+</head>
+<body>
+    <div class="mroot">
+            <button class="closebutton" onclick="location.href='code.html'">X</button>
+            <div class="mailed centertext"  id="mailed">
+                Embedding code & QR code mailed to <span class="emailvar"></span>
+            </div>
+
+            <div class="blacktext centertext">&#62; Display the QRcode for scanning</div>
+            <div class="blacktext centertext">&#62; Embed the code to your website</div>
+
+            <hr class="hrredline"/>
+
+            <div class="greenquestion">do you want to recommend this to your friends and colleagues</div>
+
+            <div class="threebuttonsdiv">
+                <button class="thbut">No</button>
+                <button class="thbut">Later</button>
+                <button class="thbut">Yes</button>
+            </div>
+
+            <input type="text" name="friendname" id="friendname" placeholder="Your friend's name" onchange="friendname = this.value">
+            <input type="email" name="friendemail" id="friendemail" placeholder="Your friend's email" onchange="friendemail = this.value">
+
+
+            
+            <button class="lowerbutton" >
+                send
+            </button>
+
+       
+    </div>
+    
+</body>
+</html>

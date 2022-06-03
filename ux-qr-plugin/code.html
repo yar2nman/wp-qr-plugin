@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Code</title>
+    <script>
+        $(document).ready(function () {
+            mimg.onchange = evt => {
+                const [file] = selectfile.files
+                if (file) {
+                    var x = URL.createObjectURL(file)
+                    console.log(x)
+                    blah.src = x
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="mroot">
+
+        <!-- <div class="photlogobox">Upload Photo</div> -->
+        <input type="file" name="file" id="selectfile" class="hiddeninput" accept="image/*" onchange="fileSelected(this.value)">
+        <img src="./images/image.png" alt="Upload Photo" id="mimg" class="mimg" id="blah">
+
+        <input type="text" name="brandname" id="brandname" placeholder="Enter your Brand name" onchange="brandname = this.value">
+        <input type="text" name="productname" id="productname" placeholder="Enter your Product name" onchange="productname = this.value">
+
+        <div class="pre"><b>Lorem</b> ipsum dolor sit amet consectetur adipisicing elit. Doloribus iusto neque iure aspernatur blanditiis, reiciendis et necessitatibus sint vel quis aliquam? Sapiente, cum qui et ut reprehenderit magni exercitationem odit!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae id cumque dolores nemo adipisci omnis vero, facilis incidunt, ad consectetur voluptatibus, delectus numquam. Dolorem consequatur magni pariatur voluptatum doloremque facilis.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, nobis quisquam explicabo debitis atque tempore at fugiat ipsum expedita. Est consectetur fugiat unde debitis, quam beatae ex sapiente laborum. Iusto!
+        </div>
+        <input class="chbox" type="checkbox" name="check" id="check" onchange="selcted = this.value;">
+        <button class="lowerbutton" onclick="location.href = 'showqrcode.html';"><u>Create Embedding Code</u></button>
+
+    </div>
+</body>
+</html>
