@@ -291,7 +291,7 @@ input::placeholder {
 }
 
 .qrbox {
-    width: 60%;
+    /* width: 60%; */
     height: 200px;
     text-align: center;
     font-weight: bolder;

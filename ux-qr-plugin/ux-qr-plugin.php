@@ -17,18 +17,13 @@ function wpb_follow_us($content) {
 if ( is_single() ) { 
 
 // Message you want to display after the post
-// Add URLs to your own Twitter and Facebook profiles
 
 $pluginUrl = plugin_dir_url('/index.html', __FILE__);
 
 $content .= '
         <p>
             <hr>
-            <a href="http://127.0.0.1:5500/ux-qr-plugin/" target="_blank">This is a link to QR Code App</a>
-
-            <h1>QR Code frame is not working</h1>
-        
-            <iframe src="index.html" frameborder="0" width="100%" height="80%"></iframe>
+            <iframe src="' . $pluginUrl . 'ux-qr-plugin/index.html" frameborder="0" width="100%" height="700px"></iframe>
             <hr>
         </p>
         '
@@ -46,3 +41,4 @@ return $content;
 }
 // Hook our function to WordPress the_content filter
 add_filter('the_content', 'wpb_follow_us'); 
+
