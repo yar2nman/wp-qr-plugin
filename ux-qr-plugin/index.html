@@ -6,10 +6,12 @@
     <title>Index</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
     <script src="./js/rating.js"></script>
+    <script src="./js/index.js"></script>
 </head>
-<body>
-    <div class="mroot">
+<body >
+    <div class="mroot"  id="root" style="background-color: white;">
         <div class='header'>
           Question
         </div>
@@ -50,12 +52,10 @@
         </div>
 
         <div class="butcont">
-          <button class='bta' onclick="location.href = 'privew.html';">Privew</button>
+          <button class='bta' onclick="location.href = 'privew.html';">preview</button>
           <button class='btb' onclick="location.href = 'code.html';" >Create Embedding code</button>
+          <button class='btb' onclick="saveHTMLAsPDF('root', 'myFile')" >Create PDF</button>
         </div>
-
-
-
       </div>
 </body>
 </html>

@@ -121,3 +121,16 @@ function exportDataToCSV(data, fileName = 'dataFile') {
         exportDataToCSV(rows, "DataFileName");
     */
 }
+
+// function to save html as pdf file
+// import the jspdf library inside the html file
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+// call the function from a button click
+// <button class='btb' onclick="saveHTMLAsPDF('root', 'myFile')" >Create PDF</button>
+
+function saveHTMLAsPDF(elementId, fileName) {
+    console.log('started');
+    let source = $('#' + elementId);
+    let doc = new jsPDF();
+    doc.addHTML(source, 10, 10, () => doc.save(fileName + ".pdf"));
+}
