@@ -79,14 +79,50 @@ function test_init(){
    
     $pluginUrl = plugin_dir_url('/index.html', __FILE__);
 
+	$style = "clear: both;";
+	if ($location_0 === "top left" || $location_0 === "bottom left") {
+		$style = "left";
+	}
+	if ($location_0 === "top right" || $location_0 === "bottom right") {
+		$style = "right";
+	}
+	if ($location_0 === "center") {
+		$style = "center";
+	}
+
     $content .= '
-            <p>
-                <iframe 
+            <div id="pdiv" class="mcontainer" >
+                <iframe class="mcontent" 
                     src="' . $pluginUrl . 'ux-qr-plugin/index.html"
-                    frameborder="0" width="100%" height="700px"
+                    frameborder="0"
                     ></iframe>
-            </p>
-            <div>' . $location_0 . '</div>
+            </div>
+			<style>
+				.mcontainer {
+					display: flex;
+					width: 80vw;
+					height: 810px;
+					flex-direction: row;
+					justify-content: '. $style .';
+								}
+				
+				.mcontent {
+					width: 32rem;
+					height: 51rem;
+								}
+
+				/* On screens that are 600px or less, set the background color to olive */
+				@media screen and (max-width: 600px) {
+					.mcontainer {
+						width: 95vw;
+						height: 100%;
+									}
+					
+					.mcontent {
+						width: 32rem;
+						height: 51rem;
+									}
+				</style>
             '
             ;
 
@@ -186,8 +222,8 @@ class UxOptionsPage {
 			<option <?php echo $selected; ?>>bottom right</option>
 			<?php $selected = (isset( $this->ux_options_page_options['location_0'] ) && $this->ux_options_page_options['location_0'] === 'bottom left') ? 'selected' : '' ; ?>
 			<option <?php echo $selected; ?>>bottom left</option>
-			<?php $selected = (isset( $this->ux_options_page_options['location_0'] ) && $this->ux_options_page_options['location_0'] === 'center ') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>center </option>
+			<?php $selected = (isset( $this->ux_options_page_options['location_0'] ) && $this->ux_options_page_options['location_0'] === 'center') ? 'selected' : '' ; ?>
+			<option <?php echo $selected; ?>>center</option>
 		</select> <?php
 	}
 
