@@ -236,3 +236,13 @@ if ( is_admin() )
  * $ux_options_page_options = get_option( 'ux_options_page_option_name' ); // Array of All Options
  * $location_0 = $ux_options_page_options['location_0']; // location
  */
+
+
+// add settings to the plugins page for ux plugin 
+function my_plugin_settings_link($links) { 
+	$settings_link = '<a href="plugins.php?page=ux-options-page">Settings</a>'; 
+	array_unshift($links, $settings_link); 
+	return $links; 
+  }
+  $plugin = plugin_basename(__FILE__); 
+  add_filter("plugin_action_links_$plugin", 'my_plugin_settings_link' );
