@@ -241,7 +241,9 @@ if ( is_admin() )
 // add settings to the plugins page for ux plugin 
 function my_plugin_settings_link($links) { 
 	$settings_link = '<a href="plugins.php?page=ux-options-page">Settings</a>'; 
-	array_unshift($links, $settings_link); 
+	$settings_link2 = '<a href="plugins.php?page=ux-options-page">about</a>'; 
+	$settings_link3 = '<a href="plugins.php?page=ux-options-page">help</a>'; 
+	array_push($links, $settings_link, $settings_link2, $settings_link3); 
 	return $links; 
   }
 $plugin = plugin_basename(__FILE__); 
