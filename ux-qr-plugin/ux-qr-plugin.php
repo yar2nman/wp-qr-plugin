@@ -101,35 +101,35 @@ function test_init(){
                     frameborder="0"
                     ></iframe>
             </div>
-			<div>
-			' . $width_1 .' ====> width
-			</div>
 			<style>
 				.mcontainer {
+					padding-top: 10px;
 					display: flex;
 					width: 85vw;
-					height: 810px;
+					min-height: 700px;
 					flex-direction: row;
 					justify-content: '. $style .';
 					background-color: '. $backgroun_3 .';
 								}
 				
 				.mcontent {
-					width: 32rem;
+					width: ' . $width_1 .'vw;
 					min-height: 50vh;
+					max-height: 85vh;
 								}
 
 				/* On screens that are 600px or less, set the background color to olive */
 				@media screen and (max-width: 600px) {
 					.mcontainer {
 						width: 95vw;
-						min-height: 50vh;
+						height: 100vh;
 									}
 					
 					.mcontent {
-						width: 32rem;
-						height: 50vh;
+						width: 90vw;
+						height: 100vh;
 									}
+				</style>
             '
             ;
 
@@ -172,7 +172,7 @@ class UxOptionsPage {
 
 		<div class="wrap">
 			<h2>ux options page</h2>
-			<p>Select posititon, widht, height and background of the plugin</p>
+			<p>Select posititon, widht and background color of the plugin</p>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
@@ -216,13 +216,13 @@ class UxOptionsPage {
 			'ux_options_page_setting_section' // section
 		);
 
-		add_settings_field(
-			'height_2', // id
-			'height', // title
-			array( $this, 'height_2_callback' ), // callback
-			'ux-options-page-admin', // page
-			'ux_options_page_setting_section' // section
-		);
+		// add_settings_field(
+		// 	'height_2', // id
+		// 	'height', // title
+		// 	array( $this, 'height_2_callback' ), // callback
+		// 	'ux-options-page-admin', // page
+		// 	'ux_options_page_setting_section' // section
+		// );
 
 		add_settings_field(
 			'backgroun_3', // id
@@ -265,10 +265,6 @@ class UxOptionsPage {
 			<option <?php echo $selected; ?>>top right</option>
 			<?php $selected = (isset( $this->ux_options_page_options['location_0'] ) && $this->ux_options_page_options['location_0'] === 'top left') ? 'selected' : '' ; ?>
 			<option <?php echo $selected; ?>>top left</option>
-			<?php $selected = (isset( $this->ux_options_page_options['location_0'] ) && $this->ux_options_page_options['location_0'] === 'bottom right') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>bottom right</option>
-			<?php $selected = (isset( $this->ux_options_page_options['location_0'] ) && $this->ux_options_page_options['location_0'] === 'bottom left') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>bottom left</option>
 			<?php $selected = (isset( $this->ux_options_page_options['location_0'] ) && $this->ux_options_page_options['location_0'] === 'center') ? 'selected' : '' ; ?>
 			<option <?php echo $selected; ?>>center</option>
 		</select> <?php
@@ -276,12 +272,14 @@ class UxOptionsPage {
 
 	public function width_1_callback() {
 		?> <select name="ux_options_page_option_name[width_1]" id="width_1">
-			<?php $selected = (isset( $this->ux_options_page_options['width_1'] ) && $this->ux_options_page_options['width_1'] === '100') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>100</option>
-			<?php $selected = (isset( $this->ux_options_page_options['width_1'] ) && $this->ux_options_page_options['width_1'] === '120') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>120</option>
-			<?php $selected = (isset( $this->ux_options_page_options['width_1'] ) && $this->ux_options_page_options['width_1'] === '150') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>150</option>
+			<?php $selected = (isset( $this->ux_options_page_options['width_1'] ) && $this->ux_options_page_options['width_1'] === '40') ? 'selected' : '' ; ?>
+			<option <?php echo $selected; ?>>40</option>
+			<?php $selected = (isset( $this->ux_options_page_options['width_1'] ) && $this->ux_options_page_options['width_1'] === '50') ? 'selected' : '' ; ?>
+			<option <?php echo $selected; ?>>50</option>
+			<?php $selected = (isset( $this->ux_options_page_options['width_1'] ) && $this->ux_options_page_options['width_1'] === '60') ? 'selected' : '' ; ?>
+			<option <?php echo $selected; ?>>60</option>
+			<?php $selected = (isset( $this->ux_options_page_options['width_1'] ) && $this->ux_options_page_options['width_1'] === '80') ? 'selected' : '' ; ?>
+			<option <?php echo $selected; ?>>80</option>
 		</select> <?php
 	}
 
@@ -298,12 +296,16 @@ class UxOptionsPage {
 
 	public function backgroun_3_callback() {
 		?> <select name="ux_options_page_option_name[backgroun_3]" id="backgroun_3">
-			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === 'red') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>red</option>
-			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === 'green') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>green</option>
-			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === 'grey') ? 'selected' : '' ; ?>
-			<option <?php echo $selected; ?>>grey</option>
+			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === '#E59866') ? 'selected' : '' ; ?>
+			<option value="#E59866" <?php echo $selected; ?>>Red</option>
+			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === '#138D75') ? 'selected' : '' ; ?>
+			<option value="#138D75" <?php echo $selected; ?>>Green</option>
+			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === '#B3B6B7') ? 'selected' : '' ; ?>
+			<option value="#B3B6B7" <?php echo $selected; ?>>Grey</option>
+			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === '#FFFFFF') ? 'selected' : '' ; ?>
+			<option value="#FFFFFF" <?php echo $selected; ?>>White</option>
+			<?php $selected = (isset( $this->ux_options_page_options['backgroun_3'] ) && $this->ux_options_page_options['backgroun_3'] === '#000000') ? 'selected' : '' ; ?>
+			<option value="#000000" <?php echo $selected; ?>>black</option>
 		</select> <?php
 	}
 
