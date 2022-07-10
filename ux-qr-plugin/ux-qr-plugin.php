@@ -116,21 +116,20 @@ function test_init(){
 				
 				.mcontent {
 					width: 32rem;
-					height: 51rem;
+					min-height: 50vh;
 								}
 
 				/* On screens that are 600px or less, set the background color to olive */
 				@media screen and (max-width: 600px) {
 					.mcontainer {
 						width: 95vw;
-						height: 100%;
+						min-height: 50vh;
 									}
 					
 					.mcontent {
 						width: 32rem;
-						height: 51rem;
+						height: 50vh;
 									}
-				</style>
             '
             ;
 
