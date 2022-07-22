@@ -103,7 +103,7 @@ function pluginPageInit(){
     $content .= '
             <div id="pdiv" class="mcontainer" >
                 <iframe class="mcontent" 
-                    src="' . $pluginUrl . 'ux-qr-plugin/index.html"
+                    src="https://100076.pythonanywhere.com/"
                     frameborder="0"
                     ></iframe>
             </div>
