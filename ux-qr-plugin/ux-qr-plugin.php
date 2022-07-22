@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name:  UX Qr Code Plugin
+Plugin Name:  voc_nps
 Plugin URI:   https://www.test.com 
 Description:  QRCode app to let customers evaluate and rate any product. 
 Version:      2.0
@@ -74,9 +74,9 @@ register_activation_hook( __FILE__, 'ux_install' );
 
  
 function ux_plugin_setup_menu(){
-    add_menu_page( 'Ux Plugin Page', 'UX Plugin', 'manage_options', 'uxpluginpage', 'pluginPageInit', 'dashicons-buddicons-buddypress-logo' );
-	add_submenu_page( 'uxpluginpage', 'Help Plugin Page', 'UX Plugin Help', 'manage_options', 'ux-plugin-help', 'uxHelpPageInit' );
-	add_submenu_page( 'uxpluginpage', 'about Plugin Page', 'UX Plugin about', 'manage_options', 'ux-plugin-about', 'uxAboutPageInit' );
+    add_menu_page( 'voc_nps Page', 'voc_nps Plugin', 'manage_options', 'voc_npsPluginPage', 'pluginPageInit', 'dashicons-buddicons-buddypress-logo' );
+	add_submenu_page( 'voc_npsPluginPage', 'Help Plugin Page', 'voc_nps Help', 'manage_options', 'ux-plugin-help', 'uxHelpPageInit' );
+	add_submenu_page( 'voc_npsPluginPage', 'about Plugin Page', 'voc_nps about', 'manage_options', 'ux-plugin-about', 'uxAboutPageInit' );
 }
  
 function pluginPageInit(){
@@ -141,9 +141,6 @@ function pluginPageInit(){
 
     echo $content;
 }
-
-
-add_action('admin_menu', 'ux_plugin_setup_menu');
 
  
 function uxHelpPageInit(){
@@ -243,7 +240,7 @@ function uxAboutPageInit(){
 }
 
 
-
+add_action('admin_menu', 'ux_plugin_setup_menu');
 
 
 /**
@@ -262,8 +259,8 @@ class UxOptionsPage {
 
 	public function ux_options_page_add_plugin_page() {
 		add_plugins_page(
-			'ux options page', // page_title
-			'ux options page', // menu_title
+			'voc_nps options page', // page_title
+			'voc_nps options page', // menu_title
 			'manage_options', // capability
 			'ux-options-page', // menu_slug
 			array( $this, 'ux_options_page_create_admin_page' ) // function
@@ -274,7 +271,7 @@ class UxOptionsPage {
 		$this->ux_options_page_options = get_option( 'ux_options_page_option_name' ); ?>
 
 		<div class="wrap">
-			<h2>ux options page</h2>
+			<h2>voc_nps options page</h2>
 			<p>Select posititon, widht and background color of the plugin</p>
 			<?php settings_errors(); ?>
 
