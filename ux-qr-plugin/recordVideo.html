@@ -8,24 +8,40 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Code</title>
     <script>
-        $(document).ready(function () {
-            mImg.onchange = evt => {
-                const [file] = selectFile.files
-                if (file) {
-                    var x = URL.createObjectURL(file)
-                    console.log(x)
-                    blah.src = x
-                }
-            }
-        });
+        var video, reqBtn, startBtn, stopBtn, ul, stream, recorder;
+            $(document).ready(function () {
+                recordVideoInit();
+
+            });
+
+
     </script>
 </head>
 <body>
     <div class="mRoot">
 
         <!-- <div class="photLogoBox">Upload Photo</div> -->
-        <input type="file" name="file" id="selectFile" class="hiddenInput" accept="image/*" onchange="fileSelected(this.value)">
-        <img src="./images/image.png" alt="Upload Photo" id="mImg" class="mImg" id="blah">
+        <!-- <input type="file" name="file" id="selectFile" class="hiddenInput" accept="image/*" onchange="fileSelected(this.value)">
+        <img src="./images/image.png" alt="Upload Photo" id="mImg" class="mImg" id="blah"> -->
+
+        <div style="display: flex;">
+
+            <button id='request' class="recordButtons">
+              Request Camera
+            </button>
+            <button id='start' class="recordButtons">
+              Start Recording
+            </button>
+            <button id='stop' class="recordButtons">
+              Stop Recording
+            </button>
+          </div>
+          <div>
+            <ul id='ul'>
+                Downloads List:
+              </ul>
+          </div>
+          <video id='video' autoplay width="300" height="600"></video>
 
         <input type="text" name="brandName" id="brandName" placeholder="Enter your Brand name" onchange="brandName = this.value">
         <input type="text" name="productName" id="productName" placeholder="Enter your Product name" onchange="productName = this.value">
@@ -34,9 +50,10 @@
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae id cumque dolores nemo adipisci omnis vero, facilis incidunt, ad consectetur voluptatibus, delectus numquam. Dolorem consequatur magni pariatur voluptatum doloremque facilis.
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, nobis quisquam explicabo debitis atque tempore at fugiat ipsum expedita. Est consectetur fugiat unde debitis, quam beatae ex sapiente laborum. Iusto!
         </div>
-        <input class="chBox" type="checkbox" name="check" id="check" onchange="selcted = this.value;">
-        <button class="lowerButton" onclick="location.href = 'showqrcode.html';"><u>Create Embedding Code</u></button>
+        <input class="chBox" type="checkbox" name="check" id="check">
+        <button class="lowerButton" onclick="console.log('Save video to db');"><u>Save Video</u></button>
 
     </div>
+
 </body>
 </html>

@@ -3,7 +3,7 @@ var mbuttons =[];
 $(document).ready(function() {
     
     // Get mbuttons list
-    mbuttons = document.getElementsByClassName("sbutton");
+    mbuttons = document.getElementsByClassName("sButton");
     console.log(mbuttons);
 
 

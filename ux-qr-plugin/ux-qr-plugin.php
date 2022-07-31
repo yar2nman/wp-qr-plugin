@@ -272,7 +272,7 @@ class UxOptionsPage {
 
 		<div class="wrap">
 			<h2>voc_nps options page</h2>
-			<p>Select posititon, widht and background color of the plugin</p>
+			<p>Select position, width and background color of the plugin</p>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">

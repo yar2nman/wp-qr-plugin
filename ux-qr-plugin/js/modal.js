@@ -11,7 +11,7 @@ $(document).ready(function() {
         btn = document.getElementsByClassName("modallink")[0];
 
         // Get the <span> element that closes the modal
-        span = document.getElementsByClassName("mclose")[0];
+        span = document.getElementsByClassName("mClose")[0];
 
         // When the user clicks on the button, open the modal
         btn.onclick = function(e) {

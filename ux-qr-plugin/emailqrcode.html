@@ -14,25 +14,25 @@
     </script>
 </head>
 <body>
-    <div class="mroot">
-        <button class="closebutton" onclick="location.href='code.html'">X</button>
-            <div class="qrbox"  id="qrboxid">
+    <div class="mRoot">
+        <button class="closeButton" onclick="location.href='code.html'">X</button>
+            <div class="qrBox"  id="qrBoxId">
             </div>
-            <p class="qruri">
+            <p class="qrUri">
                 http://localhost:8080/qrcode/qrcode.png?user:ahmed&name:Ali&code:123
             </p>
 
-            <label class="clabel">
+            <label class="cLabel">
                 <input type="checkbox" name="checkbox" value="value">
                     <u class="modallink">Privacy Policy</u>
                 </label>
-            <hr class="hrredline"/>
+            <hr class="hLine"/>
 
             <input type="text" name="username" id="username" placeholder="Your name" onchange="username = this.value">
-            <input type="email" name="useremail" id="useremail" placeholder="Your email" onchange="useremail = this.value">
+            <input type="email" name="userEmail" id="userEmail" placeholder="Your email" onchange="userEmail = this.value">
 
 
-            <button class="lowerbutton" onclick="location.href='emailconfirmation.html'">
+            <button class="lowerButton" onclick="location.href='emailconfirmation.html'">
                 <a href="emailconfirmation.html" onclick="location.href='emailconfirmation.html'">Click here to send embedding code & QR code your email</a>
             </button>
 
@@ -42,7 +42,7 @@
 
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="mclose closebutton">&times;</span>
+                <span class="mClose closeButton">&times;</span>
                 <iframe src="policy.html" frameborder="0" width="100%" height="80%"></iframe>
             </div>
 

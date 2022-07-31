@@ -12,36 +12,36 @@
     <script type="text/javascript">
         $(document).ready(function(){
             console.log("ready");
-            $(".emailvar").html(useremail);
+            $(".emailvar").html(userEmail);
         });
     </script>
 </head>
 <body>
-    <div class="mroot">
-            <button class="closebutton" onclick="location.href='code.html'">X</button>
-            <div class="mailed centertext"  id="mailed">
+    <div class="mRoot">
+            <button class="closeButton" onclick="location.href='code.html'">X</button>
+            <div class="mailed centerText"  id="mailed">
                 Embedding code & QR code mailed to <span class="emailvar"></span>
             </div>
 
-            <div class="blacktext centertext">&#62; Display the QRcode for scanning</div>
-            <div class="blacktext centertext">&#62; Embed the code to your website</div>
+            <div class="blackText centerText">&#62; Display the QRcode for scanning</div>
+            <div class="blackText centerText">&#62; Embed the code to your website</div>
 
-            <hr class="hrredline"/>
+            <hr class="hLine"/>
 
-            <div class="greenquestion">do you want to recommend this to your friends and colleagues</div>
+            <div class="greenQuestion">do you want to recommend this to your friends and colleagues</div>
 
-            <div class="threebuttonsdiv">
-                <button class="thbut">No</button>
-                <button class="thbut">Later</button>
-                <button class="thbut">Yes</button>
+            <div class="threeButtonsDiv">
+                <button class="tButton">No</button>
+                <button class="tButton">Later</button>
+                <button class="tButton">Yes</button>
             </div>
 
-            <input type="text" name="friendname" id="friendname" placeholder="Your friend's name" onchange="friendname = this.value">
-            <input type="email" name="friendemail" id="friendemail" placeholder="Your friend's email" onchange="friendemail = this.value">
+            <input type="text" name="friendName" id="friendName" placeholder="Your friend's name" onchange="friendName = this.value">
+            <input type="email" name="friendEmail" id="friendEmail" placeholder="Your friend's email" onchange="friendEmail = this.value">
 
 
             
-            <button class="lowerbutton" >
+            <button class="lowerButton" >
                 send
             </button>
 

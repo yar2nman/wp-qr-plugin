@@ -1,35 +1,35 @@
 
-var mfile = "";
+var mFile = "";
 var filename = "";
-var brandname = "";
-var productname = "";
+var brandName = "";
+var productName = "";
 var selected = null;
 var username = "";
-var useremail = "";
-var friendname = "";
-var friendemail = "";
+var userEmail = "";
+var friendName = "";
+var friendEmail = "";
 
 
 $(document).ready(function(){
-$('.mimg').click(function(event){
+$('.mImg').click(function(event){
     event.preventDefault();
-    $('#selectfile').click();
+    $('#selectFile').click();
 });
 });
 
-function fileSelected(fpath) {
-    console.log(fpath);
-    if (fpath.length == 0) {
-        mfile = "";
-        $('.mimg').text('No file selected');
+function fileSelected(fPath) {
+    console.log(fPath);
+    if (fPath.length == 0) {
+        mFile = "";
+        $('.mImg').text('No file selected');
     }else {
-        const [file] = selectfile.files;
+        const [file] = selectFile.files;
                 if (file) {
                     var x = URL.createObjectURL(file)
                     console.log(x)
-                    $('.mimg').attr("src",x);
+                    $('.mImg').attr("src",x);
                 }
-        // $('.mimg').hide();
+        // $('.mImg').hide();
     }    
 }
 
@@ -37,10 +37,9 @@ $(document).ready(function(){
     console.log(document.title);
     console.log(document.URL);
 
-    console.log('createcode');
-    if (document.getElementById("qrboxid")) {
+    if (document.getElementById("qrBoxId")) {
         
-        new QRCode(document.getElementById("qrboxid"), {text: "http://localhost:8080/qrcode/qrcode.png?user:ahmed&name:Ali&code:123",
+        new QRCode(document.getElementById("qrBoxId"), {text: "http://localhost:8080/qrcode/qrcode.png?user:ahmed&name:Ali&code:123",
         width: 256,
         height: 200,
         colorDark : "#000000",
@@ -134,3 +133,80 @@ function saveHTMLAsPDF(elementId, fileName) {
     let doc = new jsPDF();
     doc.addHTML(source, 10, 10, () => doc.save(fileName + ".pdf"));
 }
+
+var video, reqBtn, startBtn, stopBtn, ul, stream, recorder;
+function recordVideoInit () {
+    video = document.getElementById('video');
+    reqBtn = document.getElementById('request');
+    reqBtn.innerText = "Request Camera";
+    startBtn = document.getElementById('start');
+    stopBtn = document.getElementById('stop');
+    ul = document.getElementById('ul');
+    console.log('hi');
+
+
+    reqBtn.onclick = requestVideo;
+    startBtn.onclick = startRecording;
+    stopBtn.onclick = stopRecording;
+    startBtn.disabled = true;
+    ul.style.display = 'none';
+    stopBtn.disabled = true;
+
+
+
+
+}
+
+function requestVideo() {
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+    })
+        .then(stm => {
+            reqBtn.innerText = "Release Camera";
+            reqBtn.onclick = releaseVideo;
+            stream = stm;
+            startBtn.removeAttribute('disabled');
+            video.srcObject = stm
+
+            //   video.src = URL.createObjectURL(stream);
+
+            //   var binaryData = [];
+            //     binaryData.push(stream);
+            //     // window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}))
+            //     video.src = URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}));
+        }).catch(e => console.error(e));
+}
+
+function releaseVideo() {
+    console.log('release');
+    location.reload();
+}
+
+function startRecording() {
+    //   recorder = new MediaRecorder(stream, {
+    //     mimeType: 'video/mp4'
+    //   });
+    recorder = new MediaRecorder(stream);
+    recorder.start();
+    stopBtn.removeAttribute('disabled');
+    startBtn.disabled = true;
+}
+
+
+function stopRecording() {
+    recorder.ondataavailable = e => {
+        ul.style.display = 'block';
+        var a = document.createElement('a'),
+            li = document.createElement('li');
+        a.download = ['video_', (new Date() + '').slice(4, 28), '.webm'].join('');
+        a.href = URL.createObjectURL(e.data);
+        a.textContent = a.download;
+        li.appendChild(a);
+        ul.appendChild(li);
+    };
+    recorder.stop();
+    startBtn.removeAttribute('disabled');
+    stopBtn.disabled = true;
+}
+  
