@@ -7,7 +7,9 @@
     transition: all 0.3s ease-in-out 0s;
 }
 
-
+a {
+    text-decoration: none;
+}
 
 
 body {
@@ -117,6 +119,10 @@ body {
     cursor: pointer;
     border-style: none;
     flex: 0 2 115px;
+    transform: perspective(1000px) translateZ(0px);
+    border: none;
+    outline: none;
+    box-shadow: rgb(0 0 0 / 10%) 0px 10px 30px 0px;
 
 }
 
@@ -130,6 +136,9 @@ body {
     cursor: pointer;
     border-style: none;
     flex: 0 1 115px;
+    border: none;
+    outline: none;
+    box-shadow: rgb(0 0 0 / 10%) 0px 10px 30px 0px;
 }
 
 .btb:hover, .bta:hover, .lowerButton:hover, .recordButtons:hover, .tButton:hover {
@@ -141,7 +150,7 @@ body {
     pointer-events: initial;
     width: 90px;
     height: 90px;
-    background: rgb(125, 0, 254);
+    background: #98eb34;
     color: rgb(255, 255, 255);
     border: none;
     outline: none;
@@ -295,6 +304,9 @@ body {
     border-style: none;
     cursor: pointer;
     max-width: 70%;
+    border: none;
+    outline: none;
+    box-shadow: rgb(0 0 0 / 10%) 0px 10px 30px 0px;
 }
 
 input {
