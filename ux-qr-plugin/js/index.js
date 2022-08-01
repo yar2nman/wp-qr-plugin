@@ -138,7 +138,8 @@ var video, reqBtn, startBtn, stopBtn, ul, stream, recorder;
 function recordVideoInit () {
     video = document.getElementById('video');
     reqBtn = document.getElementById('request');
-    reqBtn.innerText = "Request Camera";
+    reqBtn.innerHTML = `<i class="material-icons">camera</i>
+    Request Camera`;
     startBtn = document.getElementById('start');
     stopBtn = document.getElementById('stop');
     ul = document.getElementById('ul');
@@ -163,7 +164,8 @@ function requestVideo() {
         audio: true
     })
         .then(stm => {
-            reqBtn.innerText = "Release Camera";
+            reqBtn.innerHTML = `<i class="material-icons" style="color: red;">camera</i>
+            Release Camera`;
             reqBtn.onclick = releaseVideo;
             stream = stm;
             startBtn.removeAttribute('disabled');
