@@ -158,6 +158,7 @@ function recordVideoInit () {
 
 }
 
+
 function requestVideo() {
     navigator.mediaDevices.getUserMedia({
         video: true,
@@ -183,6 +184,12 @@ function requestVideo() {
 function releaseVideo() {
     console.log('release');
     location.reload();
+
+    // stream.getTracks().forEach(function(track) {
+    //     if (track.readyState == 'live') {
+    //         track.stop();
+    //     }
+    // });
 }
 
 function startRecording() {
