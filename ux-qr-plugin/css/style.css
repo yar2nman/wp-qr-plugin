@@ -9,6 +9,7 @@
 
 a {
     text-decoration: none;
+    transition: all 5000ms ease-in-out 100ms;
 }
 
 

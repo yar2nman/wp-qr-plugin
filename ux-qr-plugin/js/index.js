@@ -134,24 +134,36 @@ function saveHTMLAsPDF(elementId, fileName) {
     doc.addHTML(source, 10, 10, () => doc.save(fileName + ".pdf"));
 }
 
-var video, reqBtn, startBtn, stopBtn, ul, stream, recorder;
+
+//#region Record Video HTML section
+var video, reqBtn, reqAudiBtn, startBtn, stopBtn, audioStartBtn, audioStopBtn, ul, stream, recorder, audioRecorder, audioPlayer;
+
 function recordVideoInit () {
     video = document.getElementById('video');
     reqBtn = document.getElementById('request');
+    reqAudiBtn = document.getElementById('requestAudio');
     reqBtn.innerHTML = `<i class="material-icons">camera</i>
     Request Camera`;
+    reqAudiBtn.innerHTML = `<i class="material-icons">mic</i>
+    Request Microphone`;
     startBtn = document.getElementById('start');
     stopBtn = document.getElementById('stop');
+    audioStartBtn = document.getElementById('audioStart');
+    audioStopBtn = document.getElementById('audioStop');
+
+    audioRecorder = document.getElementById('audioRecorder');
+    audioPlayer = document.getElementById('audioPlayer');
+    
     ul = document.getElementById('ul');
-    console.log('hi');
 
 
     reqBtn.onclick = requestVideo;
+    reqAudiBtn.onclick = requestAudio;
     startBtn.onclick = startRecording;
     stopBtn.onclick = stopRecording;
-    startBtn.disabled = true;
     ul.style.display = 'none';
     stopBtn.disabled = true;
+    audioStopBtn.disabled = true;
 
 
 
@@ -168,8 +180,10 @@ function requestVideo() {
             reqBtn.innerHTML = `<i class="material-icons" style="color: red;">camera</i>
             Release Camera`;
             reqBtn.onclick = releaseVideo;
+            $('#videoDiv').removeAttr("hidden");
             stream = stm;
             startBtn.removeAttribute('disabled');
+            video.muted = true;
             video.srcObject = stm
 
             //   video.src = URL.createObjectURL(stream);
@@ -180,22 +194,47 @@ function requestVideo() {
             //     video.src = URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}));
         }).catch(e => console.error(e));
 }
+function requestAudio() {
+    navigator.mediaDevices.getUserMedia({
+        audio: true
+    })
+        .then(stm => {
+            // $('#requestAudio').hide();
+             reqAudiBtn.innerHTML = `<i class="material-icons" style="color: red;">mic</i>
+                    Release Microphone`;
+            reqAudiBtn.onclick = releaseVideo;
+            $('#audioDiv').show();
+            stream = stm;
+            // startBtn.removeAttribute('disabled');
+            // video.muted = true;
+            // video.srcObject = stm
+
+        }).catch(e => console.error(e));
+}
 
 function releaseVideo() {
-    console.log('release');
-    location.reload();
+    // console.log('release');
+    // location.reload();
 
-    // stream.getTracks().forEach(function(track) {
-    //     if (track.readyState == 'live') {
-    //         track.stop();
-    //     }
-    // });
+    if (stream) {
+        stream.getTracks().forEach(function(track) {
+            if (track.readyState == 'live') {
+                track.stop();
+            }
+        });
+    }
+    
+    reqBtn.innerHTML = `<i class="material-icons">camera</i>
+    Request Camera`;
+    reqAudiBtn.innerHTML = `<i class="material-icons">mic</i>
+    Request Microphone`;
+    $('#videoDiv').attr("hidden", "true");
+    $('#audioDiv').hide();
+    reqBtn.onclick = requestVideo;
+    reqAudiBtn.onclick = requestAudio;
 }
 
 function startRecording() {
-    //   recorder = new MediaRecorder(stream, {
-    //     mimeType: 'video/mp4'
-    //   });
     recorder = new MediaRecorder(stream);
     recorder.start();
     stopBtn.removeAttribute('disabled');
@@ -204,6 +243,7 @@ function startRecording() {
 
 
 function stopRecording() {
+    let x;
     recorder.ondataavailable = e => {
         ul.style.display = 'block';
         var a = document.createElement('a'),
@@ -213,9 +253,15 @@ function stopRecording() {
         a.textContent = a.download;
         li.appendChild(a);
         ul.appendChild(li);
+        x = URL.createObjectURL(e.data);
+        video.srcObject = null;
+        video.src = x;
+        video.muted = false;
     };
     recorder.stop();
     startBtn.removeAttribute('disabled');
     stopBtn.disabled = true;
 }
-  
+
+//#endregion
+
