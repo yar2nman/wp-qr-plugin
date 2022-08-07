@@ -141,29 +141,35 @@ var video, reqBtn, reqAudiBtn, startBtn, stopBtn, audioStartBtn, audioStopBtn, u
 function recordVideoInit () {
     video = document.getElementById('video');
     reqBtn = document.getElementById('request');
+    if (reqBtn) {
+        reqBtn.innerHTML = `<i class="material-icons">camera</i>
+            Request Camera`;
+    }
+
     reqAudiBtn = document.getElementById('requestAudio');
-    reqBtn.innerHTML = `<i class="material-icons">camera</i>
-    Request Camera`;
-    reqAudiBtn.innerHTML = `<i class="material-icons">mic</i>
-    Request Microphone`;
+    if (reqAudiBtn) {
+        reqAudiBtn.innerHTML = `<i class="material-icons">mic</i>
+            Request Microphone`;
+     }
     startBtn = document.getElementById('start');
     stopBtn = document.getElementById('stop');
     audioStartBtn = document.getElementById('audioStart');
     audioStopBtn = document.getElementById('audioStop');
-
-    audioRecorder = document.getElementById('audioRecorder');
     audioPlayer = document.getElementById('audioPlayer');
     
     ul = document.getElementById('ul');
 
 
-    reqBtn.onclick = requestVideo;
-    reqAudiBtn.onclick = requestAudio;
-    startBtn.onclick = startRecording;
-    stopBtn.onclick = stopRecording;
-    ul.style.display = 'none';
-    stopBtn.disabled = true;
-    audioStopBtn.disabled = true;
+    if (reqBtn) {reqBtn.onclick = requestVideo;}
+    
+    if (reqAudiBtn) {reqAudiBtn.onclick = requestAudio;}
+    if (startBtn) {startBtn.onclick = startRecording;}
+    if (stopBtn) {stopBtn.onclick = stopRecording;}
+    if (audioStartBtn) {audioStartBtn.onclick = startAudioRecording;}
+    if (audioStopBtn) {audioStopBtn.onclick = stopAudioRecording;}
+    if (ul) {ul.style.display = 'none';}
+    if (stopBtn) {stopBtn.disabled = true;}
+    if (audioStopBtn) {audioStopBtn.disabled = true;}
 
 
 
@@ -177,21 +183,17 @@ function requestVideo() {
         audio: true
     })
         .then(stm => {
-            reqBtn.innerHTML = `<i class="material-icons" style="color: red;">camera</i>
-            Release Camera`;
-            reqBtn.onclick = releaseVideo;
+            if (reqBtn) {
+                reqBtn.innerHTML = `<i class="material-icons" style="color: red;">camera</i>
+                    Release Camera`;
+                reqBtn.onclick = releaseVideo;
+            }
             $('#videoDiv').removeAttr("hidden");
             stream = stm;
             startBtn.removeAttribute('disabled');
+            audioStartBtn.removeAttribute('disabled');
             video.muted = true;
             video.srcObject = stm
-
-            //   video.src = URL.createObjectURL(stream);
-
-            //   var binaryData = [];
-            //     binaryData.push(stream);
-            //     // window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}))
-            //     video.src = URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}));
         }).catch(e => console.error(e));
 }
 function requestAudio() {
@@ -199,23 +201,15 @@ function requestAudio() {
         audio: true
     })
         .then(stm => {
-            // $('#requestAudio').hide();
              reqAudiBtn.innerHTML = `<i class="material-icons" style="color: red;">mic</i>
                     Release Microphone`;
             reqAudiBtn.onclick = releaseVideo;
             $('#audioDiv').show();
             stream = stm;
-            // startBtn.removeAttribute('disabled');
-            // video.muted = true;
-            // video.srcObject = stm
-
         }).catch(e => console.error(e));
 }
 
 function releaseVideo() {
-    // console.log('release');
-    // location.reload();
-
     if (stream) {
         stream.getTracks().forEach(function(track) {
             if (track.readyState == 'live') {
@@ -240,19 +234,18 @@ function startRecording() {
     stopBtn.removeAttribute('disabled');
     startBtn.disabled = true;
 }
+function startAudioRecording() {
+    recorder = new MediaRecorder(stream);
+    recorder.start();
+    audioStopBtn.removeAttribute('disabled');
+    audioStopBtn.disabled = false;
+    audioStartBtn.disabled = true;
+}
 
 
 function stopRecording() {
     let x;
     recorder.ondataavailable = e => {
-        ul.style.display = 'block';
-        var a = document.createElement('a'),
-            li = document.createElement('li');
-        a.download = ['video_', (new Date() + '').slice(4, 28), '.webm'].join('');
-        a.href = URL.createObjectURL(e.data);
-        a.textContent = a.download;
-        li.appendChild(a);
-        ul.appendChild(li);
         x = URL.createObjectURL(e.data);
         video.srcObject = null;
         video.src = x;
@@ -261,6 +254,18 @@ function stopRecording() {
     recorder.stop();
     startBtn.removeAttribute('disabled');
     stopBtn.disabled = true;
+}
+function stopAudioRecording() {
+    let x;
+    recorder.ondataavailable = e => {
+        x = URL.createObjectURL(e.data);
+        audioPlayer.src = x;
+        audioPlayer.play();
+        ul.style.display = 'block';
+    };
+    recorder.stop();
+    audioStartBtn.removeAttribute('disabled');
+    audioStopBtn.disabled = true;
 }
 
 //#endregion
