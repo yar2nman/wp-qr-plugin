@@ -156,10 +156,13 @@ body {
 }
 
 .recordButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     cursor: pointer;
     pointer-events: initial;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 70px;
     background: #98eb34;
     color: rgb(255, 255, 255);
     border: none;
@@ -170,7 +173,6 @@ body {
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    flex-direction: column;
     text-transform: uppercase;
     font-weight: 700;
     line-height: 16px;

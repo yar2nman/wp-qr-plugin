@@ -143,13 +143,13 @@ function recordVideoInit () {
     reqBtn = document.getElementById('request');
     if (reqBtn) {
         reqBtn.innerHTML = `<i class="material-icons">camera</i>
-            Request Camera`;
+            Enable`;
     }
 
     reqAudiBtn = document.getElementById('requestAudio');
     if (reqAudiBtn) {
         reqAudiBtn.innerHTML = `<i class="material-icons">mic</i>
-            Request Microphone`;
+            Enable`;
      }
     startBtn = document.getElementById('start');
     stopBtn = document.getElementById('stop');
@@ -185,7 +185,7 @@ function requestVideo() {
         .then(stm => {
             if (reqBtn) {
                 reqBtn.innerHTML = `<i class="material-icons" style="color: red;">camera</i>
-                    Release Camera`;
+                    Disable`;
                 reqBtn.onclick = releaseVideo;
             }
             $('#videoDiv').removeAttr("hidden");
@@ -193,7 +193,7 @@ function requestVideo() {
             startBtn.removeAttribute('disabled');
             audioStartBtn.removeAttribute('disabled');
             video.muted = true;
-            video.srcObject = stm
+            video.srcObject = stm;
         }).catch(e => console.error(e));
 }
 function requestAudio() {
@@ -202,7 +202,7 @@ function requestAudio() {
     })
         .then(stm => {
              reqAudiBtn.innerHTML = `<i class="material-icons" style="color: red;">mic</i>
-                    Release Microphone`;
+                    Disable`;
             reqAudiBtn.onclick = releaseVideo;
             $('#audioDiv').show();
             stream = stm;
@@ -219,9 +219,9 @@ function releaseVideo() {
     }
     
     reqBtn.innerHTML = `<i class="material-icons">camera</i>
-    Request Camera`;
+    <div>Enable</div>`;
     reqAudiBtn.innerHTML = `<i class="material-icons">mic</i>
-    Request Microphone`;
+    <div>Enable</div>`;
     $('#videoDiv').attr("hidden", "true");
     $('#audioDiv').hide();
     reqBtn.onclick = requestVideo;
