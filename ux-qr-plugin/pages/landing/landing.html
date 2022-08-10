@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+
+    
+    <style>
+        * {margin: 0; padding: 0; text-decoration: none;}
+          body{font-family: 'Roboto', sans-serif;}
+          a, a:visited, a:active {text-decoration: none!important;}
+          header {
+          background: #fff;
+          border-bottom: dashed 2px #0c617d;
+          }
+          .menu-grid {
+          text-align: left;
+          padding: 0px 0;
+          }
+          .menu-grid .btn-group {
+          margin-right: 80px;
+          }
+          .menu-grid .dropdown-toggle, 
+          .menu-grid .dropdown-toggle:hover, 
+          .menu-grid .dropdown-toggle:focus, 
+          .menu-grid .dropdown-toggle:active, 
+          .menu-grid .btn-group.open .dropdown-toggle {
+          border: 0;
+          float: right;
+          box-shadow: none;
+          background: transparent;
+          }
+          .menu-grid .dropdown-menu {
+          margin: 0;
+          border: 0;
+          padding: 0;
+          left: auto;
+          right: 35px;
+          margin-top: 10px;
+          box-shadow: none;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          -ms-border-radius: 3px;
+          -o-border-radius: 3px;
+          border-radius: 3px;
+          background-color: #ffffff;
+          -webkit-box-shadow: 0 1px 8px 0 #393939;
+          -moz-box-shadow: 0 1px 8px 0 #393939;
+          -ms-box-shadow: 0 1px 8px 0 #393939;
+          -o-box-shadow: 0 1px 8px 0 #393939;
+          box-shadow: 0 1px 8px 0 #393939;
+          }
+          .menu-grid .list {
+          width: 380px;
+          position: relative;
+          padding: 15px 25px;
+          }
+          .menu-grid .list:after {
+          bottom: 100%;
+          right: 20px;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+          border-color: rgba(136, 183, 213, 0);
+          border-bottom-color: #FFFFFF;
+          border-width: 8px;
+          margin-right: 0px;
+          }
+          .menu-grid .list .menu {
+          padding: 0px 0;
+          color: #333333;
+          text-align: center;
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          -ms-border-radius: 2px;
+          -o-border-radius: 2px;
+          border-radius: 2px;
+          text-transform: capitalize;
+          text-decoration: none;
+          border: 1px solid transparent;
+          -webkit-box-shadow: 0 0 1px 0 transparent;
+          -moz-box-shadow: 0 0 1px 0 transparent;
+          -ms-box-shadow: 0 0 1px 0 transparent;
+          -o-box-shadow: 0 0 1px 0 transparent;
+          box-shadow: 0 0 1px 0 transparent;
+          }
+          .menu-grid .list .menu:hover {
+            background-color: #f5f5f5;
+          border: 1px solid #e8e8e8;
+          -webkit-box-shadow: 0 0 1px 0 #dddddd;
+          -moz-box-shadow: 0 0 1px 0 #dddddd;
+          -ms-box-shadow: 0 0 1px 0 #dddddd;
+          -o-box-shadow: 0 0 1px 0 #dddddd;
+          box-shadow: 0 0 1px 0 #dddddd;
+          }
+          .menu-grid .menu span {
+          width: 55px;
+          /* height: 55px; */
+          display: block;
+          margin: 0 auto 10px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+          /* background-image: url('v1_376447c3.png'); */
+          }
+  
+          @media only screen and (max-device-width: 768px) {
+            .menu-grid .dropdown-menu {
+              margin: 0;
+              border: 0;
+              padding: 0;
+              /* left: auto; */
+              right: -1vw;
+              margin-top: 5px;
+              box-shadow: none;
+              -webkit-border-radius: 3px;
+              -moz-border-radius: 3px;
+              -ms-border-radius: 3px;
+              -o-border-radius: 3px;
+              border-radius: 3px;
+              background-color: #ffffff;
+              -webkit-box-shadow: 0 1px 8px 0 #393939;
+              -moz-box-shadow: 0 1px 8px 0 #393939;
+              -ms-box-shadow: 0 1px 8px 0 #393939;
+              -o-box-shadow: 0 1px 8px 0 #393939;
+              box-shadow: 0 1px 8px 0 #393939;
+  }
+      
+  }
+  
+  .home-nav {
+    padding: 10px;
+  }
+  .menu {
+      min-height: 113px;
+  }
+      </style>
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example">
+
+    <!-- Example Code -->
+    
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <div class="col-1  pull-right menu-grid">
+            <div class="navbar-header pull-left">
+            </div>
+            <div class="btn-group">
+              <i class="material-icons">apps</i>
+              <div class="dropdown-menu" role="menu">
+                <div class="list row row-cols-2 row-cols-md-3" >
+                    <div class="col">
+                      <a href="#">
+                        <span class="blog"></span>
+                        <div class="menu"><span><i class="material-icons">language</i></span>Social Media Listening</div>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <div class="menu"><span><i class="material-icons">groups</i></span>Focus Groups & Interviews</div>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <div class="menu"><span><i class="material-icons">content_paste</i></span>surveys</div>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <span class="blog"></span>
+                        <div class="menu"><span><i class="material-icons">email</i></span>Email, Chat & Call Data</div>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <div class="menu"><span><i class="material-icons">sentiment_satisfied</i></span>voc_nps</div>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <div class="menu"><span><i class="material-icons">hotel_class</i></span>Customer Reviews</div>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <div class="menu"><span><i class="material-icons">forum</i></span>Blogs & Forums</div>
+                      </a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </nav>
+    
+    <!-- End Example Code -->
+
+    <script>
+        $(document).ready(function () {
+          // $('.dropdown-menu').show();
+          $('.menu-grid .btn-group').hover(function () {
+            $('.dropdown-menu', this).stop(true, true).delay(200).fadeIn();
+          }, function () {
+            $('.dropdown-menu', this).stop(true, true).delay(500).fadeOut('fast');
+          });
+
+          $("document").click(function () {
+            $(".dropdown-menu").hide();
+          });
+        });
+      </script>
+  </body>
+</html>
